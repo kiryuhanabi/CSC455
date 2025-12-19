@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update client profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="update_c.css">
+</head>
+<body>
+  <div class="update-wrapper">
+    <form class="update-card" id="updateForm">
+      <h1 class="update-title">Update profile</h1>
+      <p class="update-subtitle">Add academic information and skills to complete your profile.</p>
+
+      <label class="field">
+        <span>University</span>
+        <input type="text" id="university" placeholder="Your university name">
+      </label>
+
+      <label class="field">
+        <span>Major</span>
+        <input type="text" id="major" placeholder="Primary field of study">
+      </label>
+
+      <label class="field">
+        <span>Minor</span>
+        <input type="text" id="minor" placeholder="Secondary field of study (optional)">
+      </label>
+
+      <label class="field">
+        <span>CGPA</span>
+        <input type="text" id="cgpa" placeholder="e.g. 3.65">
+      </label>
+
+      <label class="field">
+        <span>Expected graduation date</span>
+        <input type="date" id="gradDate">
+      </label>
+
+      <label class="field field-textarea">
+        <span>Technical skills</span>
+        <textarea id="skills" placeholder="List your technical skills, separated by commas"></textarea>
+      </label>
+
+      <label class="field field-textarea">
+        <span>Achievements / awards</span>
+        <textarea id="achievements" placeholder="Notable achievements, awards, competitions"></textarea>
+      </label>
+
+      <label class="field field-textarea">
+        <span>Certifications</span>
+        <textarea id="certs" placeholder="Relevant certificates and courses"></textarea>
+      </label>
+
+      <button type="submit" class="primary-btn">Save changes</button>
+      <p class="error-message" id="errorMessage"></p>
+    </form>
+  </div>
+
+  <script src="update_c.js"></script>
+</body>
+</html>
