@@ -12,7 +12,7 @@
     <div class="logo">CareerGuide</div>
     <nav class="nav">
       <a href="home.html">Home</a>
-      <a href="assessment.html">Assessment</a>
+      <a href="assessment_c.html">Assessment</a>
       <a href="mentorship.html">Mentorship program</a>
       <a href="profile_c.html" class="active">Profile</a>      
       <a href="login.html" id="logoutLink">Logout</a>
@@ -80,42 +80,42 @@
     </section>
 
     <!-- Questions table -->
-    <section class="profile-card">
-      <h2 class="section-title">Your Queries</h2>
-      <div class="table-wrapper">
-        <table class="questions-table">
-          <thead>
-            <tr>
-              <th>ID no.</th>
-              <th>Query (question)</th>
-              <th>Status</th>
-              <th>Readiness</th>
-            </tr>
-          </thead>
-          <tbody id="questionsBody">
-            <!-- Example static rows; you can later load these from JS/API -->
-            <tr>
-              <td>1</td>
-              <td>How to prepare for a data analyst role?</td>
-              <td><span class="status status-pending">Pending</span></td>
-              <td><span class="readiness readiness-almost">Almost ready</span></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>What projects should I add to my portfolio?</td>
-              <td><span class="status status-replied">Replied</span></td>
-              <td><span class="readiness readiness-ready">Ready</span></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Is my current course load sufficient for internships?</td>
-              <td><span class="status status-pending">Pending</span></td>
-              <td><span class="readiness readiness-not">Not ready</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+    <!-- Questions table (client view of own queries) -->
+<section class="profile-card">
+  <h2 class="section-title">Your questions</h2>
+  <div class="table-wrapper">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Query</th>
+          <th>Readiness</th>
+          <th>Feedback by</th>
+          <th>Detailed feedback</th>
+        </tr>
+      </thead>
+      <tbody id="questionsBody">
+        <!-- Filled by profile_c.js -->
+      </tbody>
+    </table>
+  </div>
+</section>
+<section class="profile-card">
+  <h2 class="section-title">Applied mentorship programs</h2>
+  <div class="table-wrapper">
+    <table class="questions-table">
+      <thead>
+        <tr>
+          <th>Program</th>
+          <th>Mentor / owner</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody id="appliedProgramsBody"></tbody>
+    </table>
+  </div>
+</section>
+
   </div>
 
   <script src="profile_c.js"></script>

@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateBtn = document.getElementById("updateProfileBtn");
   const logoutLink = document.getElementById("logoutLink");
 
-  // Load stored profile data (if you used this earlier)
+  // ---- Load stored client profile (name, email, academic info) ----
   const storedProfile = JSON.parse(localStorage.getItem("clientProfile") || "{}");
 
   if (storedProfile.fullName) {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("pCerts").textContent = storedProfile.certs;
   }
 
-  // Load questions from localStorage and render table
+  // ---- Load all questions and show only this client's ----
   const tbody = document.getElementById("questionsBody");
   tbody.innerHTML = "";
 
@@ -92,26 +92,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  questions.forEach((q) => {
+  const clientEmail = storedProfile.email || null;
+
+  // Filter: only show queries that belong to this client
+  const myQuestions = clientEmail
+    ? questions.filter((q) => q.clientEmail === clientEmail)
+    : questions; // fallback: show all if email not set
+
+  myQuestions.forEach((q) => {
     const tr = document.createElement("tr");
 
+    // ID
     const tdId = document.createElement("td");
     tdId.textContent = q.id;
 
+    // Query text
     const tdText = document.createElement("td");
     tdText.textContent = q.text;
 
-    const tdStatus = document.createElement("td");
-    const statusSpan = document.createElement("span");
-    statusSpan.classList.add("status");
-    if (q.status === "Replied") {
-      statusSpan.classList.add("status-replied");
-    } else {
-      statusSpan.classList.add("status-pending");
-    }
-    statusSpan.textContent = q.status;
-    tdStatus.appendChild(statusSpan);
-
+    // Status (Pending / Replied)
+    
+    // Readiness
     const tdReady = document.createElement("td");
     const readySpan = document.createElement("span");
     readySpan.classList.add("readiness");
@@ -122,17 +123,55 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       readySpan.classList.add("readiness-not");
     }
-    readySpan.textContent = q.readiness;
+    readySpan.textContent = q.readiness || "Not ready";
     tdReady.appendChild(readySpan);
+
+    // Feedback by
+    const tdBy = document.createElement("td");
+    tdBy.textContent = q.feedbackBy || "—";
+
+    // Detailed feedback
+    const tdDetail = document.createElement("td");
+    tdDetail.textContent = q.detailedFeedback || "No feedback yet";
 
     tr.appendChild(tdId);
     tr.appendChild(tdText);
-    tr.appendChild(tdStatus);
     tr.appendChild(tdReady);
+    tr.appendChild(tdBy);
+    tr.appendChild(tdDetail);
 
     tbody.appendChild(tr);
   });
+  // after rendering questions in profile_c.js
+  const appliedBody = document.getElementById("appliedProgramsBody");
+  if (appliedBody) {
+    const clientEmail = storedProfile.email || "";
+    const keyApps = clientEmail ? `appliedProgramDetails_${clientEmail}` : "appliedProgramDetails_guest";
+    const applied = JSON.parse(localStorage.getItem(keyApps) || "[]");
 
+    appliedBody.innerHTML = "";
+    applied.forEach((p) => {
+      const tr = document.createElement("tr");
+
+      const tdTitle = document.createElement("td");
+      tdTitle.textContent = p.title;
+
+      const tdOwner = document.createElement("td");
+      tdOwner.textContent = p.owner || "—";
+
+      const tdDur = document.createElement("td");
+      tdDur.textContent = p.duration || "—";
+
+      tr.appendChild(tdTitle);
+      tr.appendChild(tdOwner);
+      tr.appendChild(tdDur);
+
+      appliedBody.appendChild(tr);
+    });
+  }
+
+
+  // ---- Navigation ----
   updateBtn.addEventListener("click", () => {
     window.location.href = "update_c.html";
   });
@@ -144,4 +183,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 

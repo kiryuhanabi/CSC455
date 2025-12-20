@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | CareerGuide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">CareerGuide</div>
+    <nav class="nav">
+      <a href="admin.html" class="active">Admin profile</a>
+      <a href="login.html" id="logoutLink">Logout</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <!-- Users -->
+    <section class="card">
+      <header class="section-header">
+        <h2 class="section-title">Users</h2>
+        <button id="addUserBtn" class="primary-btn small">Add user</button>
+      </header>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Full name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Profile link</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="usersBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Queries -->
+    <section class="card">
+      <header class="section-header">
+        <h2 class="section-title">Queries</h2>
+      </header>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Client</th>
+              <th>Query</th>
+              <th>Status</th>
+              <th>Readiness</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="queriesBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Mentorship programs -->
+    <section class="card">
+      <header class="section-header">
+        <h2 class="section-title">Mentorship programs</h2>
+        <button id="addProgramBtn" class="primary-btn small">Add program</button>
+      </header>
+      <div id="programsList" class="programs-list">
+        <!-- Filled by admin.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

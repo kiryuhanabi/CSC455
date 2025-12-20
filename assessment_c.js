@@ -32,12 +32,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Generate new incremental ID
     const newId = questions.length > 0 ? questions[questions.length - 1].id + 1 : 1;
 
+    const profile = JSON.parse(localStorage.getItem("clientProfile") || "{}");
+    const clientEmail = profile.email || "";
+    const clientName = profile.fullName || "Client";
+
     const newQuestion = {
       id: newId,
       text,
-      status: "Pending",          // Pending / Replied
-      readiness: "Not ready"      // Ready / Not ready / Almost ready
-    };
+      status: "Pending",
+      readiness: "Not ready",
+      clientEmail: clientEmail,
+      clientName: clientName,
+      clientProfileUrl: "profile_c.html",  // link to client profile
+  // feedbackBy, detailedFeedback, specialistProfileUrl will be added later
+};
+
 
     questions.push(newQuestion);
     localStorage.setItem("clientQuestions", JSON.stringify(questions));

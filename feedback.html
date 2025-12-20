@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Provide Feedback | CareerGuide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+  <div class="update-wrapper">
+    <form class="update-card" id="feedbackForm">
+      <h1 class="update-title">Provide feedback</h1>
+      <p class="update-subtitle">
+        Review the client query and share your readiness rating and detailed feedback.
+      </p>
+
+      <div class="field read-only">
+        <span>Query</span>
+        <p id="fbQueryText" class="readonly-box"></p>
+      </div>
+
+      <label class="field">
+        <span>Feedback by</span>
+        <input type="text" id="fbBy" placeholder="Your name (specialist)">
+      </label>
+
+      <label class="field">
+        <span>Readiness</span>
+        <select id="fbReadiness">
+          <option value="Not ready">Not ready</option>
+          <option value="Almost ready">Almost ready</option>
+          <option value="Ready">Ready</option>
+        </select>
+      </label>
+
+      <label class="field field-textarea">
+        <span>Detailed feedback</span>
+        <textarea id="fbDetail" placeholder="Explain what the client is doing well and what to improve."></textarea>
+      </label>
+
+      <button type="submit" class="primary-btn">Save feedback</button>
+      <p class="error-message" id="errorMessage"></p>
+    </form>
+  </div>
+
+  <script src="feedback.js"></script>
+</body>
+</html>
