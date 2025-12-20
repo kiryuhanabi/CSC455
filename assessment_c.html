@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Client Assessment | CareerGuide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assessment_c.css">
+</head>
+<body>
+  <!-- Dashboard header (same style as home/profile) -->
+  <header class="header">
+    <div class="logo">CareerGuide</div>
+    <nav class="nav">
+      <a href="home.html">Home</a>
+      <a href="assessment_c.html" class="active">Assessment</a>
+      <a href="mentorship.html">Mentorship program</a>
+      <a href="profile_c.html">Profile</a>
+      <a href="login.html" id="logoutLink">Logout</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- Left: query submission -->
+    <section class="card query-card">
+      <h1 class="page-title">Submit a new query</h1>
+      <p class="page-subtitle">
+        Explain your situation and what kind of feedback you are looking for.
+      </p>
+
+      <form id="queryForm" class="query-form">
+        <label class="field field-textarea">
+          <span>Your query</span>
+          <textarea
+            id="queryText"
+            placeholder="Write your question here..."
+            required
+          ></textarea>
+        </label>
+
+        <button type="submit" class="primary-btn">Submit query</button>
+        <p class="status-message" id="formStatus"></p>
+      </form>
+    </section>
+
+    <!-- Right: AI feedback chatbox -->
+    <section class="card chat-card">
+      <h2 class="section-title">AI feedback</h2>
+      <p class="chat-subtitle">
+        Use the AI chat to quickly refine your query before specialists review it.
+      </p>
+
+      <div class="chatbox" id="chatbox">
+        <div class="chat-message bot">
+          <div class="bubble">
+            Hi! Share your query on the left, then ask me how to make it clearer or more impactful.
+          </div>
+        </div>
+      </div>
+
+      <form id="chatForm" class="chat-input-row">
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Ask the AI for quick feedback..."
+          autocomplete="off"
+        >
+        <button type="submit" class="secondary-btn">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="assessment_c.js"></script>
+</body>
+</html>

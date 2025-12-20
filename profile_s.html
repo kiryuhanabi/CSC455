@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Specialist Profile | CareerGuide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="profile_s.css">
+</head>
+<body>
+  <!-- Dashboard header (same pattern as home, with Logout) -->
+  <header class="header">
+    <div class="logo">CareerGuide</div>
+    <nav class="nav">
+      <a href="home.html">Home</a>
+      <a href="asessment_s.html">Queries</a>
+      <a href="profile_s.html" class="active">Specialist profile</a>
+      <a href="login.html" id="logoutLink">Logout</a>
+    </nav>
+  </header>
+
+  <div class="profile-wrapper">
+    <header class="profile-header">
+      <h1 class="profile-title">Specialist Profile</h1>
+      <p class="profile-subtitle">Present your expertise and get ready to assess clients.</p>
+    </header>
+
+    <!-- Basic info -->
+    <section class="profile-card">
+      <h2 class="section-title">Basic information</h2>
+      <div class="profile-row">
+        <span class="label">Full name</span>
+        <span class="value" id="sFullName">Alex Smith</span>
+      </div>
+      <div class="profile-row">
+        <span class="label">Email</span>
+        <span class="value" id="sEmail">alex.smith@example.com</span>
+      </div>
+    </section>
+
+    <!-- Professional info -->
+    <section class="profile-card">
+      <div class="profile-card-header">
+        <h2 class="section-title">Professional details</h2>
+        <button id="updateProfileBtn" class="primary-btn">Update profile</button>
+      </div>
+
+      <div class="profile-row profile-row-multiline">
+        <span class="label">Short bio</span>
+        <span class="value" id="sBio">Not set</span>
+      </div>
+      <div class="profile-row">
+        <span class="label">Professional title</span>
+        <span class="value" id="sTitle">Not set</span>
+      </div>
+      <div class="profile-row profile-row-multiline">
+        <span class="label">Degrees / certifications</span>
+        <span class="value" id="sDegrees">Not set</span>
+      </div>
+      <div class="profile-row profile-row-multiline">
+        <span class="label">Experience</span>
+        <span class="value" id="sExperience">Not set</span>
+      </div>
+      <div class="profile-row profile-row-multiline">
+        <span class="label">Skills</span>
+        <span class="value" id="sSkills">Not set</span>
+      </div>
+    </section>
+
+    <!-- Start assessing -->
+    <section class="profile-card profile-card-center">
+      <h2 class="section-title">Start assessing clients</h2>
+      <p class="profile-subtitle small">
+        When you are ready, move to the assessment workspace to review client questions.
+      </p>
+      <button id="startAssessingBtn" class="primary-btn large">
+        Start assessing
+      </button>
+    </section>
+  </div>
+
+  <script src="profile_s.js"></script>
+</body>
+</html>
