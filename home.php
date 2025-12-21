@@ -1,3 +1,35 @@
+<?php
+session_start();
+
+// Decide where buttons/links should go
+$isLoggedIn = isset($_SESSION['user_id']);
+$role = $_SESSION['role'] ?? null;
+
+if ($isLoggedIn) {
+    if ($role === 'client') {
+        $assessmentLink = 'assessment_c.php';
+        $profileLink    = 'profile_c.php';
+        $homeLink       = 'home_c.php';
+    } elseif ($role === 'specialist') {
+        $assessmentLink = 'assessment_s.php';
+        $profileLink    = 'profile_s.php';
+        $homeLink       = 'home_s.php';
+    } else {
+        $assessmentLink = '#';
+        $profileLink    = '#';
+        $homeLink       = '#';
+    }
+    $authLink = 'login.php';
+    $authText = 'Logout';
+} else {
+    // Not logged in: send to login page
+    $assessmentLink = 'login.php';
+    $profileLink    = 'login.php';
+    $homeLink       = 'home.php';
+    $authLink       = 'login.php';
+    $authText       = 'Login';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +42,13 @@
   <header class="header">
     <div class="logo">CareerGuide</div>
     <nav class="nav">
-      <a href="#">Home</a>
-      <a href="#">Assessment</a>
-      <a href="mentorship.html">Mentorship program</a>
-      <a href="#">Profile</a>
-      <a href="#">login</a>
+      <a href="<?php echo htmlspecialchars($homeLink); ?>">Home</a>
+      <a href="<?php echo htmlspecialchars($assessmentLink); ?>">Assessment</a>
+      <a href="mentorship.php">Mentorship program</a>
+      <a href="<?php echo htmlspecialchars($profileLink); ?>">Profile</a>
+      <a href="<?php echo htmlspecialchars($authLink); ?>">
+        <?php echo htmlspecialchars($authText); ?>
+      </a>
     </nav>
   </header>
 
@@ -26,8 +60,14 @@
         calibrate skills, and connect to specialists who understand real-world hiring.
       </p>
       <div class="hero-cta">
-        <button class="btn-primary">Start assessment</button>
-        <button class="btn-secondary">View profile</button>
+        <button class="btn-primary"
+                onclick="window.location.href='<?php echo htmlspecialchars($assessmentLink); ?>';">
+          Start assessment
+        </button>
+        <button class="btn-secondary"
+                onclick="window.location.href='<?php echo htmlspecialchars($profileLink); ?>';">
+          View profile
+        </button>
       </div>
       <p class="hero-meta">No credit card. No spam. Just structured guidance.</p>
 

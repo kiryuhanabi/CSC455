@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Only logged-in specialists
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? null) !== 'specialist') {
+    header("Location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +19,10 @@
   <header class="header">
     <div class="logo">CareerGuide</div>
     <nav class="nav">
-      <a href="home_s.html">Home</a>
-      <a href="assessment_s.html">Queries</a>
-      <a href="profile_s.html">Profile</a>
-      <a href="login.html" id="logoutLink">Logout</a>
+      <a href="home_s.php">Home</a>
+      <a href="assessment_s.php">Queries</a>
+      <a href="profile_s.php">Profile</a>
+      <a href="logout.php" id="logoutLink">Logout</a>
     </nav>
   </header>
 
@@ -25,8 +34,14 @@
         calibrate skills, and connect to specialists who understand real-world hiring.
       </p>
       <div class="hero-cta">
-        <button class="btn-primary">Start assessment</button>
-        <button class="btn-secondary">View profile</button>
+        <button class="btn-primary"
+                onclick="window.location.href='assessment_s.php';">
+          Start assessment
+        </button>
+        <button class="btn-secondary"
+                onclick="window.location.href='profile_s.php';">
+          View profile
+        </button>
       </div>
       <p class="hero-meta">No credit card. No spam. Just structured guidance.</p>
 
