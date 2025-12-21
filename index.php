@@ -1,37 +1,10 @@
 <?php
-// index.php at the root of your project (e.g. htdocs/careerguide)
-session_start();
+// index.php — always start at login page
 
-/*
-  Assumes:
-  - Login code sets $_SESSION['user_id'] and $_SESSION['role'] = 'client' or 'specialist' or 'admin'.
-  - You already have: home.php (public/client entry), home_s.php, admin.php, login.php.
-*/
+// Show errors temporarily while debugging (optional; remove later)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Not logged in: send to public home (or login if you prefer)
-if (!isset($_SESSION['user_id'])) {
-    header("Location: home.php");
-    exit;
-}
-
-$role = $_SESSION['role'] ?? 'client';
-
-if ($role === 'client') {
-    header("Location: home_c.php");   // or profile_c.php / assessment_c.php
-    exit;
-}
-
-if ($role === 'specialist') {
-    header("Location: home_s.php");
-    exit;
-}
-
-if ($role === 'admin') {
-    header("Location: admin.php");
-    exit;
-}
-
-// Fallback
-header("Location: home.php");
+header("Location: login.php");
 exit;
-

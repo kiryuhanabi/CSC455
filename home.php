@@ -1,7 +1,12 @@
 <?php
+// index.php – minimal safe homepage
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
-// Decide where buttons/links should go
 $isLoggedIn = isset($_SESSION['user_id']);
 $role = $_SESSION['role'] ?? null;
 
@@ -17,15 +22,14 @@ if ($isLoggedIn) {
     } else {
         $assessmentLink = '#';
         $profileLink    = '#';
-        $homeLink       = '#';
+        $homeLink       = 'index.php';
     }
-    $authLink = 'login.php';
+    $authLink = 'logout.php';
     $authText = 'Logout';
 } else {
-    // Not logged in: send to login page
     $assessmentLink = 'login.php';
     $profileLink    = 'login.php';
-    $homeLink       = 'home.php';
+    $homeLink       = 'index.php';
     $authLink       = 'login.php';
     $authText       = 'Login';
 }
